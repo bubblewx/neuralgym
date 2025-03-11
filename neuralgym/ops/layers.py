@@ -1,7 +1,7 @@
 """ layers """
 import numpy as np
 import tensorflow as tf
-
+from tensorflow.keras.initializers import GlorotUniform
 from tensorflow.python.training.moving_averages import assign_moving_average
 from tensorflow.python.ops import control_flow_ops
 
@@ -90,7 +90,7 @@ def moving_average_var(x, decay=0.99, initial_value=0.,
 
 
 def depthwise_conv2d(x, ksize=3, stride=1, decay=0.0, biased=True, relu=False,
-         activation_fn=None, w_init=tf.keras.layers.xavier_initializer_conv2d(),
+         activation_fn=None, w_init=GlorotUniform(),
          padding='SAME', name='depthwise_conv2d'):
     """Simple wrapper for convolution layer.
     Padding can be 'SAME', 'VALID', 'REFLECT', 'SYMMETRIC'
